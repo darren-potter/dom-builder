@@ -45,7 +45,7 @@ class DOMObject implements DOMObjectInterface
      * Set an attribute of the DOM Object.
      *
      * @param string $name The name of the attribute to set.
-     * @param mixed $value The value of the attribute to set. If NULL is given, the attribute will be unset. To set a
+     * @param mixed $value The value of the attribute to set. If null is given, the attribute will be unset. To set a
      * blank attribute, you must set an empty string.
      *
      * @return $this
@@ -97,12 +97,13 @@ class DOMObject implements DOMObjectInterface
             throw new InvalidArgumentException('The child to append must be of type DOMObjectInterface or string.');
         }
 
-        if ($position === null) {
-            $this->children[] = $child;
-        } else {
+        if (is_int($position) && array_key_exists($position, $this->children)) {
             $this->freePositionInChildren($position);
             $this->children[$position] = $child;
+        } else {
+            $this->children[] = $child;
         }
+
         ksort($this->children);
 
         return $this;
@@ -118,8 +119,8 @@ class DOMObject implements DOMObjectInterface
     private function freePositionInChildren(int $position)
     {
         ksort($this->children);
-        $children = array_reverse(array_splice($this->children, $position), true);
-        array_walk($children, function (DOMObject $domObject, int $key) {
+        $children = array_reverse(array_slice($this->children, $position, null, true), true);
+        array_walk($children, function ($domObject, int $key) {
             $this->children[$key + 1] = $domObject;
         });
     }
@@ -136,7 +137,7 @@ class DOMObject implements DOMObjectInterface
         foreach ($this->attributes as $attribute => $value) {
             $domString .= $attribute;
             if ($value !== '') {
-                $domString .= '"' . htmlspecialchars($value) . '"';
+                $domString .= '="' . htmlspecialchars($value) . '"';
             }
             $domString .= ' ';
         }

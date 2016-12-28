@@ -1,5 +1,22 @@
 {
+    "name": "darren-potter/dom-builder",
+    "type": "library",
+    "description": "DOM Builder Library",
+    "authors": [
+        {
+            "name": "Darren Potter",
+            "email": "darren.potter@outlook.com"
+        }
+    ],
+    "require": {
+        "php": "~7"
+    },
     "require-dev": {
         "phpunit/phpunit" : "~5.7"
+    },
+    "autoload": {
+        "psr-4": {
+            "Devgorilla\\DOMBuilder\\DOMObject\\": "src/"
+        }
     }
 }

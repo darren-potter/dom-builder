@@ -27,7 +27,7 @@ interface DOMObjectInterface
      * Set an attribute of the DOM Object.
      *
      * @param string $name The name of the attribute to set.
-     * @param mixed $value The value of the attribute to set. If NULL is given, the attribute will be unset. To set a
+     * @param mixed $value The value of the attribute to set. If null is given, the attribute will be unset. To set a
      * blank attribute, you must set an empty string.
      *
      * @return $this
