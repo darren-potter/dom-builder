@@ -34,7 +34,7 @@ class DOMObjectTest extends PHPUnit_Framework_TestCase
      */
     public function setUp()
     {
-        $this->domObject = new DOMObject\DOMObject($this->objectName);
+        $this->domObject = $this->getDOMObject($this->objectName);
     }
 
     /**

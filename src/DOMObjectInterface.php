@@ -17,13 +17,6 @@ use InvalidArgumentException;
 interface DOMObjectInterface
 {
     /**
-     * DOMObject constructor.
-     *
-     * @param string $name The name of the DOM Object.
-     */
-    public function __construct(string $name);
-
-    /**
      * Set an attribute of the DOM Object.
      *
      * @param string $name The name of the attribute to set.
